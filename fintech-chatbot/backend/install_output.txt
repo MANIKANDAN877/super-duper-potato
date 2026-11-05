@@ -1,0 +1,10 @@
+Requirement already satisfied: httpx==0.28.1 in .\.venv\Lib\site-packages (0.28.1)
+Requirement already satisfied: anyio in .\.venv\Lib\site-packages (from httpx==0.28.1) (4.15.1)
+Requirement already satisfied: certifi in .\.venv\Lib\site-packages (from httpx==0.28.1) (2026.10.23)
+Requirement already satisfied: httpcore==1.* in .\.venv\Lib\site-packages (from httpx==0.28.1) (1.0.9)
+Requirement already satisfied: idna in .\.venv\Lib\site-packages (from httpx==0.28.1) (3.20)
+Requirement already satisfied: h11>=0.16 in .\.venv\Lib\site-packages (from httpcore==1.*->httpx==0.28.1) (0.16.0)
+Requirement already satisfied: typing_extensions>=4.16.0 in .\.venv\Lib\site-packages (from anyio->httpx==0.28.1) (4.16.0)
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.2
+[notice] To update, run: D:\newassign\fintech-chatbot\backend\.venv\Scripts\python.exe -m pip install --upgrade pip

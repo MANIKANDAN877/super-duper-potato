@@ -1,79 +1,77 @@
-# Eazily Done — Fintech Account Assistant
+# Project report
 
-## 1. Overview
+## 1. Goal
 
-Eazily Done is a fintech assistant for account insights, loan FAQ guidance, and business-finance education. The system combines a React frontend, a FastAPI backend, and a database-backed knowledge layer to answer questions related to account analysis, expense breakdowns, fees, savings guidance, and official Indian Overseas Bank (IOB) loan information.
+The project delivers a working fintech assistant with a chatbot UI, dashboard, PayPal Sandbox integration, and a deployment-ready stack for local and Daytona-based execution.
 
-## 2. Business objective
+## 2. What was already present
 
-The project is designed to help users:
+The workspace had a valid three-layer application structure already in place:
 
-- understand account activity through debit/credit percentages and fee explanations,
-- ask finance questions in natural language,
-- review MSME and business-loan FAQs,
-- access official IOB information about loans, eligibility, documents, and scheme guidance,
-- receive a professional, user-friendly response experience.
+- React front end for chat and dashboard interactions
+- FastAPI backend with health, chatbot, dashboard, and PayPal endpoints
+- PostgreSQL schema and sample seed data
 
-## 3. System architecture
+## 3. What was improved
 
-The application follows a simple three-layer architecture:
+The following issues were fixed and completed:
 
-1. Frontend layer
-   - React + Vite
-   - Chat interface with suggestion chips and message rendering
-   - Chart panel for account-activity breakdowns
+- PayPal sandbox recipient configuration is now editable via backend environment variables
+- payment order creation includes the configured payee email for mentor transfer flows
+- missing payment-status lookup endpoint was added
+- default payment amount was aligned with the required 1 USD demonstration case
+- backend environment template now includes PayPal variables
+- Docker Compose and Dockerfiles were added for Unix sandbox deployment
+- project documentation was expanded to include setup, testing, and Daytona instructions
 
-2. API layer
-   - FastAPI service in the backend
-   - Routes for health checks, suggested questions, and chat handling
-   - CORS support for local frontend development
+## 4. API functionality
 
-3. Knowledge layer
-   - Structured question/answer records in the SQL seed data
-   - Smart fallback knowledge in the Python chatbot logic
-   - Official IOB references for MSME and business-loan guidance
+The backend currently supports:
 
-## 4. Features implemented
+- chatbot answers from structured and database-backed knowledge
+- dashboard summary and transaction retrieval
+- PayPal reporting balance and transaction data
+- order creation and capture workflow
+- explicit demo-mode handling when sandbox credentials are missing or Reporting API access is unavailable
 
-- Business-loan FAQs
-- MSME loan guidance
-- Eligibility checks and application readiness guidance
-- Required document explanations
-- Interest-rate awareness with source-based disclaimers
-- Account breakdown analysis for debits, credits, fees, and penalties
-- Fee and penalty explanation for common account-related charges
-- Savings recommendations and account-product guidance
-- Professional response formatting
-- DB-safe fallback responses when the database is unavailable
+## 5. PayPal behaviour
 
-## 5. Technology stack
+The backend uses OAuth 2.0 client credentials to obtain an access token and calls the official PayPal REST endpoints.
 
-- Frontend: React, Vite, JavaScript, CSS
-- Backend: Python, FastAPI, Uvicorn
-- Database: PostgreSQL with psycopg2
-- Validation: Python unittest / pytest
-- Deployment mode: local full-stack development environment
+It intentionally avoids fabricating balance or capture data. If the sandbox account lacks the right permission, the API returns a clear warning and the UI shows a demo-limited state.
 
-## 6. Implementation notes
+## 6. Database notes
 
-The main issue with the original chatbot was that it relied on shallow keyword matching, which caused generic answers for finance questions that needed specific product and scheme context. The improved solution adds:
+PostgreSQL is used for:
 
-- explicit official IOB answer mapping for business loans, MSME loans, and documents,
-- account-breakdown detection for percentage-based financial requests,
-- fee and savings guidance for common user questions,
-- graceful fallback when the database is unavailable,
-- source-aware answers so users are directed to official IOB materials when policy details require verification.
+- question knowledge for chatbot responses
+- account summary data
+- transaction history
+- fraud alert records
 
-## 7. Official IOB sources used
+The schema already includes unique indexes to help avoid duplicate transaction references.
 
-- https://www.iob.bank.in/en/
-- https://www.iob.bank.in/en/msme
-- https://www.iob.bank.in/en/iob-msme-easy
+## 7. Deployment readiness
 
-## 8. Data and security considerations
+The repository now includes:
 
-This assistant provides educational and informational support, not an official bank application channel. Loan eligibility, rate information, fees, and documentation requirements can change, so final verification should always happen on the official IOB website or with the bank branch.
+- backend/Dockerfile
+- frontend/Dockerfile
+- docker-compose.yml
+- daytona-start.sh
 
-## 9. Outcome
+This configuration is suitable for a Unix sandbox environment such as Daytona.
 
-The project now provides a working fintech assistant with a chat UI, more professional answer quality, official source references, and stronger financial-topic handling than the original prototype.
+## 8. Verification status
+
+The following checks were executed successfully:
+
+- backend unittest suite passed via the project virtual environment
+- frontend dependency installation was performed
+- frontend production build was tested
+
+Actual live PayPal payment success cannot be claimed without a valid sandbox account, credentials, and user authorization. That part remains environment-dependent and must be verified in the target sandbox.
+
+## 9. Final outcome
+
+The project is operational as a local fintech assistant and is prepared for Unix sandbox deployment. It preserves the existing chatbot functionality while adding the missing PayPal and deployment support required for the assignment.

@@ -1,0 +1,28 @@
+﻿python.exe : test_account_breakdown_answer_includes_example_and_formula 
+(tests.test_chatbot.ChatbotChartTests.test_account_breakdown_answer_includes_example_and_formula) ... ok
+At line:1 char:87
++ ... CALAPPDATA; & "C:\Program Files\PostgreSQL\17\pgAdmin 4\python\python ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_account_br...formula) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_allows_vite_dev_ports_for_cors (tests.test_chatbot.ChatbotChartTests.test_allows_vite_dev_ports_for_cors) ... ok
+test_builds_chart_response_for_account_breakdown 
+(tests.test_chatbot.ChatbotChartTests.test_builds_chart_response_for_account_breakdown) ... ok
+test_business_loan_answer_uses_official_iob_information 
+(tests.test_chatbot.ChatbotChartTests.test_business_loan_answer_uses_official_iob_information) ... ok
+test_create_payment_order_returns_safe_demo_response 
+(tests.test_chatbot.ChatbotChartTests.test_create_payment_order_returns_safe_demo_response) ... ok
+test_create_payment_order_uses_paypal_when_configured 
+(tests.test_chatbot.ChatbotChartTests.test_create_payment_order_uses_paypal_when_configured) ... ok
+test_detects_percentage_distribution_request 
+(tests.test_chatbot.ChatbotChartTests.test_detects_percentage_distribution_request) ... ok
+test_fee_question_explains_common_account_charges 
+(tests.test_chatbot.ChatbotChartTests.test_fee_question_explains_common_account_charges) ... ok
+test_interest_rate_question_asks_for_scheme_when_context_is_unclear 
+(tests.test_chatbot.ChatbotChartTests.test_interest_rate_question_asks_for_scheme_when_context_is_unclear) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.077s
+
+OK
