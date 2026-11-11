@@ -346,6 +346,7 @@ function PayPalReportingPanel({
   );
 }
 
+<<<<<<< HEAD
 function PayoutPanel({ accountDetails }) {
   const [recipientEmail, setRecipientEmail] = useState("friend@example.com");
   const [amount, setAmount] = useState("1.00");
@@ -479,6 +480,8 @@ function PayoutPanel({ accountDetails }) {
   );
 }
 
+=======
+>>>>>>> bc5b4f9292e0303e5b8168d5df279fcf74c6f01f
 function DashboardPanel({
   dashboard,
   isLoading,
@@ -672,8 +675,11 @@ function DashboardPanel({
         }
       />
 
+<<<<<<< HEAD
       <PayoutPanel accountDetails={paypalBalance} />
 
+=======
+>>>>>>> bc5b4f9292e0303e5b8168d5df279fcf74c6f01f
       {error && <div className="error-banner">{error}</div>}
     </div>
   );
