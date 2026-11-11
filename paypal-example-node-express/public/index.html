@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PayPal Checkout Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 24px;
+      }
+      .card {
+        border: 1px solid #dfe3e8;
+        border-radius: 12px;
+        padding: 24px;
+      }
+      button {
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>PayPal Checkout Demo</h1>
+      <p>Buy the demo product for $9.99 USD.</p>
+      <div id="paypal-button-container"></div>
+      <p id="status">Waiting for payment…</p>
+    </div>
+
+    <script>
+      fetch("/api/config")
+        .then((response) => response.json())
+        .then(({ clientId, env, sdkUrl }) => {
+          const script = document.createElement("script");
+          script.src = sdkUrl;
+          script.onload = () => {
+            if (!window.paypal) {
+              throw new Error("PayPal SDK failed to load.");
+            }
+
+            window.paypal
+              .Buttons({
+                createOrder: async () => {
+                  const response = await fetch("/api/orders", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ itemId: "demo-product" }),
+                  });
+
+                  const data = await response.json();
+
+                  if (!response.ok) {
+                    throw new Error(data.error ?? "Unable to create order.");
+                  }
+
+                  return data.id;
+                },
+                onApprove: async (data) => {
+                  const response = await fetch(
+                    `/api/orders/${data.orderID}/capture`,
+                    {
+                      method: "POST",
+                    },
+                  );
+
+                  const result = await response.json();
+
+                  if (!response.ok) {
+                    throw new Error(result.error ?? "Unable to capture order.");
+                  }
+
+                  document.getElementById("status").textContent =
+                    `Payment captured: ${result.status}`;
+                },
+                onError: (err) => {
+                  console.error(err);
+                  document.getElementById("status").textContent =
+                    "Payment failed.";
+                },
+              })
+              .render("#paypal-button-container");
+          };
+
+          document.body.appendChild(script);
+        })
+        .catch((error) => {
+          console.error(error);
+          document.getElementById("status").textContent =
+            "Unable to load PayPal config.";
+        });
+    </script>
+  </body>
+</html>
