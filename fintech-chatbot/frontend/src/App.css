@@ -29,6 +29,13 @@
   border-bottom: 1px solid rgba(148, 163, 184, 0.16);
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .eyebrow {
   margin: 0;
   font-size: 0.72rem;
@@ -43,6 +50,7 @@
   color: #f8fafc;
 }
 
+.nav-btn,
 .clear-btn {
   border: 1px solid rgba(125, 211, 252, 0.5);
   background: rgba(14, 116, 144, 0.18);
@@ -51,6 +59,130 @@
   border-radius: 999px;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.nav-btn.is-active {
+  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+  border-color: rgba(96, 165, 250, 0.8);
+  color: white;
+}
+
+.nav-btn:hover,
+.clear-btn:hover {
+  background: rgba(14, 116, 144, 0.3);
+}
+
+.payment-panel {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 32px 24px;
+}
+
+.payment-header {
+  margin-bottom: 20px;
+}
+
+.payment-header h2 {
+  margin: 8px 0 0;
+  color: #f8fafc;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+}
+
+.payment-form {
+  display: grid;
+  gap: 18px;
+  max-width: 440px;
+}
+
+.recipient-banner {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(30, 64, 175, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #dbeafe;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.payment-form label {
+  display: grid;
+  gap: 8px;
+  color: #dbeafe;
+  font-weight: 600;
+}
+
+.payment-form input,
+.payment-form select {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 1rem;
+}
+
+.payment-form button {
+  margin-top: 8px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  padding: 14px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.payment-form button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.paypal-link,
+.capture-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.paypal-link {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  color: white;
+}
+
+.capture-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.order-id {
+  margin-top: 18px;
+  color: #bfdbfe;
+  font-size: 0.92rem;
+}
+
+.payment-status {
+  margin-top: 24px;
+  background: rgba(12, 18, 34, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 .clear-btn:hover {
@@ -159,6 +291,327 @@
   font-weight: 700;
 }
 
+.dashboard-panel {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 28px 24px 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h2 {
+  margin: 8px 0 0;
+  color: #f8fafc;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+}
+
+.account-pill {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  color: #dbeafe;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.risk-card {
+  background: linear-gradient(
+    135deg,
+    rgba(88, 28, 135, 0.18),
+    rgba(30, 41, 59, 0.7)
+  );
+  border-color: rgba(168, 85, 247, 0.35);
+}
+
+.summary-card {
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 18px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 120px;
+}
+
+.summary-card span {
+  color: #bfdbfe;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summary-card strong {
+  color: #f8fafc;
+  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  word-break: break-word;
+}
+
+.balance-card {
+  background: linear-gradient(
+    135deg,
+    rgba(21, 128, 61, 0.2),
+    rgba(16, 185, 129, 0.08)
+  );
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 20px;
+}
+
+.panel-block {
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  padding: 18px 18px 6px;
+}
+
+.panel-block h3 {
+  margin: 0 0 16px;
+  color: #f8fafc;
+  font-size: 1.05rem;
+}
+
+.transaction-list,
+.alert-list {
+  display: grid;
+  gap: 12px;
+}
+
+.transaction-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.transaction-title {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.transaction-meta {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #bfdbfe;
+}
+
+.transaction-amount {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.transaction-amount.credit {
+  color: #4ade80;
+}
+
+.transaction-amount.debit {
+  color: #fca5a5;
+}
+
+.alert-row {
+  padding: 14px 12px;
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  background: rgba(16, 24, 40, 0.72);
+}
+
+.alert-row p {
+  margin: 8px 0;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.alert-row small {
+  color: #cbd5e1;
+}
+
+.alert-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.alert-tag,
+.alert-status {
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.alert-tag {
+  background: rgba(148, 163, 184, 0.18);
+  color: #dbeafe;
+}
+
+.alert-status {
+  background: rgba(234, 179, 8, 0.14);
+  color: #fcd34d;
+}
+
+.severity-high {
+  border-left-color: #f87171;
+}
+
+.severity-medium {
+  border-left-color: #fbbf24;
+}
+
+.severity-low {
+  border-left-color: #34d399;
+}
+
+.paypal-report-panel {
+  margin-top: 22px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.report-header h3 {
+  margin: 8px 0 0;
+  color: #f8fafc;
+  font-size: 1.2rem;
+}
+
+.report-refresh-btn {
+  border: 1px solid rgba(125, 211, 252, 0.5);
+  background: rgba(14, 116, 144, 0.18);
+  color: #e0f2fe;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.report-balance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.report-balance-grid .summary-card small {
+  color: #cbd5e1;
+  display: block;
+  line-height: 1.5;
+  font-size: 0.78rem;
+}
+
+.paypal-transaction-block h4 {
+  margin: 0 0 12px;
+  color: #f8fafc;
+}
+
+.transaction-row.credit,
+.transaction-row.debit {
+  align-items: center;
+}
+
+.transaction-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.transaction-side small {
+  color: #cbd5e1;
+  font-size: 0.72rem;
+}
+
+.risk-panel {
+  margin-top: 22px;
+}
+
+.risk-list {
+  display: grid;
+  gap: 12px;
+}
+
+.risk-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.risk-score-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.risk-high {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fecaca;
+}
+
+.risk-medium {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fef3c7;
+}
+
+.risk-low {
+  background: rgba(16, 185, 129, 0.12);
+  color: #bbf7d0;
+}
+
+.empty-state {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  padding: 12px 0;
+}
+
 .message-row.is-bot .message-bubble {
   background: rgba(30, 41, 59, 0.88);
   border: 1px solid rgba(148, 163, 184, 0.14);
@@ -207,6 +660,16 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.info-banner {
+  margin-top: 8px;
+  background: rgba(14, 116, 144, 0.16);
+  border: 1px solid rgba(125, 211, 252, 0.45);
+  color: #dbeafe;
+  padding: 10px 12px;
+  border-radius: 12px;
+  line-height: 1.5;
 }
 
 .error-banner {
