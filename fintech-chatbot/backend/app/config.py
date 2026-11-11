@@ -53,6 +53,8 @@ class Settings:
         "CORS_ORIGIN_REGEX",
         r"https?://([A-Za-z0-9-]+\.)*(localhost|127\.0\.0\.1|0\.0\.0\.0|daytona\.[A-Za-z0-9.-]+)(:\d+)?",
     )
+    DASHBOARD_USERNAME: str = os.getenv("DASHBOARD_USERNAME", "pannanum").strip() or "pannanum"
+    DASHBOARD_PASSWORD: str = os.getenv("DASHBOARD_PASSWORD", "pannanum").strip() or "pannanum"
 
     def paypal_credentials_configured(self) -> bool:
         return bool(self.PAYPAL_CLIENT_ID and self.PAYPAL_CLIENT_SECRET)
